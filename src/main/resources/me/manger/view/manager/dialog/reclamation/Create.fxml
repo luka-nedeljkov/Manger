@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.manager.dialog.reclamation.CreateController">
+   <children>
+      <Label layoutX="93.0" layoutY="14.0" text="Registruj reklamaciju">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="25.0" layoutY="60.0" prefWidth="350.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="120.0" valignment="TOP" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Investitor: " />
+            <Label text="Glavni izvodjač: " GridPane.rowIndex="1" />
+            <Label text="Izvodjač: " GridPane.rowIndex="2" />
+            <Label text="Nekretnina: " GridPane.rowIndex="4" />
+            <Label text="Komentar: " GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="chbInvestor" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="chbMainContractor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="chbContractor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="chbProperty" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea fx:id="txaMessage" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Tip radova: " GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="chbType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <HBox layoutX="60.0" layoutY="346.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#cancel" prefHeight="40.0" prefWidth="100.0" text="Poništi">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Region prefWidth="80.0" />
+            <Button mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="100.0" text="Registruj">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

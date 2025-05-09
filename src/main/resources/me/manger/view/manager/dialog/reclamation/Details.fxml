@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.manager.dialog.reclamation.DetailsController">
+   <children>
+      <Button layoutX="160.0" layoutY="380.0" mnemonicParsing="false" onAction="#close" prefHeight="40.0" prefWidth="80.0" text="Zatvori">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <GridPane layoutX="50.0" layoutY="85.0" prefHeight="280.0" prefWidth="300.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Datum otvaranja: " />
+            <Label text="Datum zatvaranja: " GridPane.rowIndex="1" />
+            <Label text="Komentar: " GridPane.rowIndex="2" />
+            <Label text="Status: " GridPane.rowIndex="3" />
+            <Label text="Investitor: " GridPane.rowIndex="4" />
+            <Label text="Glavni Izvodjač: " GridPane.rowIndex="5" />
+            <Label text="Izvodjač: " GridPane.rowIndex="6" />
+            <Label text="Nekretnina: " GridPane.rowIndex="7" />
+            <Label fx:id="lblCreated" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="lblCompleted" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="lblMessage" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="lblStatus" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="lblInvestor" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="lblMainContractor" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="lblContractor" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="lblProperty" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         </children>
+      </GridPane>
+      <Label layoutX="140.0" layoutY="25.0" text="Reklamacija">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

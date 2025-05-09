@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.manager.LedgerController">
+   <children>
+      <TableView fx:id="table" layoutX="25.0" layoutY="25.0" prefHeight="550.0" prefWidth="650.0">
+         <columns>
+            <TableColumn fx:id="clmDate" prefWidth="200.0" resizable="false" text="Datum i vreme" />
+            <TableColumn fx:id="clmMessage" prefWidth="450.0" resizable="false" text="Poruka" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

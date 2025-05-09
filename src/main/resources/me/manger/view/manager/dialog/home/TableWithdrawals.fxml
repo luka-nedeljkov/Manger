@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.manager.dialog.home.TableWithdrawalsController">
+    <children>
+        <TableView fx:id="table" layoutX="15.0" layoutY="15.0" prefHeight="370.0" prefWidth="570.0">
+            <columns>
+                <TableColumn fx:id="clmDate" prefWidth="120.0" text="Datum" />
+                <TableColumn fx:id="clmAmount" text="Iznos" />
+            <TableColumn fx:id="clmMessage" prefWidth="370.0" text="Opis" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.owner.OwnerController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: lightgray;">
+         <children>
+            <Label layoutX="60.0" layoutY="30.0" text="Manger">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutY="150.0" prefHeight="300.0" prefWidth="300.0">
+               <children>
+                  <Button fx:id="btnH" disable="true" mnemonicParsing="false" onAction="#home" prefHeight="50.0" prefWidth="160.0" text="Početna">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnN" mnemonicParsing="false" onAction="#notifications" prefHeight="50.0" prefWidth="160.0" text="Obaveštenja">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <Button layoutX="70.0" layoutY="525.0" mnemonicParsing="false" onAction="#logout" prefHeight="50.0" prefWidth="160.0" text="Log out">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root" layoutX="300.0" prefHeight="600.0" prefWidth="700.0" />
+   </children>
+</AnchorPane>

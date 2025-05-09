@@ -1,0 +1,25 @@
+1
+100.0
+Milovan Nedeljkov, Ivana Nedeljkov, a
+ing.milovan@gmail.com, nedeljkov.ivana@gmail.com, a
++38163611055, +381631100706
+false
+123
+1745853227905|Upravnik|Sastanak: 29.04.2025. 16:00 - Dnevni red: Popravka krova
+1746562602322|Upravnik|Reklamacija registrovana - Slavina curi
+1746628241580|Upravnik|Uplata: 100000.0 din.
+1746789621163|Upravnik|Reklamacija registrovana - asd
+1746789789896|Upravnik|Izmenjeni podaci o vlasniku: Stan 1
+1746789974335|Upravnik|Izmenjeni podaci o vlasniku: Stan 1
+1746789979260|Upravnik|Izmenjeni podaci o vlasniku: Stan 1
+1746790201388|Upravnik|Uplata: 10000.0 din.
+1746790216324|Upravnik|Isplata: 10000.0 - asd
+1746790231358|Upravnik|Uplata: 10000.0 din.
+1746790240362|Upravnik|Uplata: 10000.0 din.
+1746790244406|Upravnik|Isplata: 1000.0 - asd
+1746790688185|Upravnik|Isplata: 110000.0 - asd
+#
+1746628241580|100000.0|Mesečna uplata
+1746790201388|10000.0|Mesečna uplata
+1746790231358|10000.0|Mesečna uplata
+1746790240362|10000.0|Mesečna uplata

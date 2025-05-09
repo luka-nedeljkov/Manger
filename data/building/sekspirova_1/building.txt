@@ -1,0 +1,21 @@
+Sekspirova 1
+9000.0
+1745853227905|Sastanak: 29.04.2025. 16:00 - Dnevni red: Popravka krova
+1746562602322|Reklamacija registrovana - Slavina curi
+1746628241580|Uplata: 100000.0din. - Stan 1
+1746789621163|Reklamacija registrovana - asd
+1746789789896|Izmenjeni podaci o vlasniku: Stan 1
+1746789974335|Izmenjeni podaci o vlasniku: Stan 1
+1746789979260|Izmenjeni podaci o vlasniku: Stan 1
+1746790201387|Uplata: 10000.0din. - Stan 1
+1746790216324|Isplata: 10000.0 - asd
+1746790231358|Uplata: 10000.0din. - Stan 1
+1746790240362|Uplata: 10000.0din. - Stan 1
+1746790244406|Isplata: 1000.0 - asd
+1746790688185|Isplata: 110000.0 - asd
+#
+1745853227905|1746789603555|Crko steker|completed|plattner|skv|contractor1|sekspirova_1-apartment1
+1746562602322|1746562615510|Slavina curi|completed|plattner|skv|contractor1|sekspirova_1-apartment1
+1746789621163|-1|asd|reported|plattner|dijegonala|contractor1|sekspirova_1-apartment1
+#
+1746628241580|100000.0|Mesečna uplata

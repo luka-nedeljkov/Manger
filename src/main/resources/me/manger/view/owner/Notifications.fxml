@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.owner.NotificationsController">
+   <children>
+      <TableView fx:id="table" layoutX="25.0" layoutY="80.0" prefHeight="495.0" prefWidth="650.0">
+        <columns>
+          <TableColumn fx:id="clmDate" prefWidth="130.0" resizable="false" text="Datum i vreme" />
+          <TableColumn fx:id="clmSource" prefWidth="75.0" resizable="false" text="Izvor" />
+            <TableColumn fx:id="clmMessage" prefWidth="445.0" resizable="false" text="Poruka" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER" layoutX="100.0" layoutY="20.0" prefHeight="50.0" prefWidth="500.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="Obaveštenja">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="filter" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Uplate" toggleGroup="$filter">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton layoutX="110.0" layoutY="10.0" mnemonicParsing="false" text="Žalbe" toggleGroup="$filter">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton layoutX="331.0" layoutY="26.0" mnemonicParsing="false" selected="true" text="Sve" toggleGroup="$filter">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

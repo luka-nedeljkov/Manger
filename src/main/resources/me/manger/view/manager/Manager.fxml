@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.manager.ManagerController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: lightgray;">
+         <children>
+            <Label layoutX="60.0" layoutY="30.0" text="Manger">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutY="125.0" prefWidth="300.0">
+               <children>
+                  <Button fx:id="btnH" disable="true" mnemonicParsing="false" onAction="#home" prefHeight="50.0" prefWidth="180.0" text="Pocetna">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnC" layoutX="80.0" layoutY="190.0" mnemonicParsing="false" onAction="#contact" prefHeight="50.0" prefWidth="180.0" text="Kontakt">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnN" layoutX="80.0" layoutY="265.0" mnemonicParsing="false" onAction="#notifications" prefHeight="50.0" prefWidth="180.0" text="Obaveštenja">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnL" layoutX="80.0" layoutY="245.0" mnemonicParsing="false" onAction="#ledger" prefHeight="50.0" prefWidth="180.0" text="Dnevnik unosa">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnR" layoutX="70.0" layoutY="230.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="50.0" prefWidth="180.0" text="Reklamacije">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <Button layoutX="70.0" layoutY="525.0" mnemonicParsing="false" onAction="#logout" prefHeight="50.0" prefWidth="160.0" text="Log out">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root" layoutX="300.0" prefHeight="600.0" prefWidth="700.0" />
+   </children>
+</AnchorPane>

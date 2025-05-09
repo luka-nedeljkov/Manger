@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.browniebytes.javafx.control.DateTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.manger.controller.manager.dialog.home.MeetingController">
+   <children>
+      <Label layoutX="145.0" layoutY="20.0" text="Zakaži sastanak">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <HBox layoutX="63.0" layoutY="70.0" prefWidth="325.0">
+         <children>
+            <Label text="Datum i vreme: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <DateTimePicker fx:id="dtpDate" prefWidth="190.0" />
+         </children>
+      </HBox>
+      <VBox layoutX="63.0" layoutY="100.0">
+         <children>
+            <Label text="Dnevni red:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txaSubject" prefHeight="200.0" prefWidth="325.0" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="125.0" layoutY="345.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="80.0" text="Poništi">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#scheduleMeeting" prefHeight="35.0" prefWidth="80.0" text="Zakaži">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
