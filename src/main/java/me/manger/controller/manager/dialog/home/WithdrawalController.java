@@ -58,6 +58,7 @@ public class WithdrawalController implements Initializable {
         }
 
         if(!building.withdraw(amount)) {
+            (new Alert(Alert.AlertType.WARNING, "Nedovoljna sredstva na računu.", ButtonType.OK)).show();
             return;
         }
 
