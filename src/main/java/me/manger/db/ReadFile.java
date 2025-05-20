@@ -1,15 +1,15 @@
 package me.manger.db;
 
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.building.ReclamationEntry;
 import me.manger.model.company.Company;
 import me.manger.model.company.Contractor;
 import me.manger.model.company.Investor;
 import me.manger.model.company.MainContractor;
 import me.manger.model.ledger.LedgerEntry;
-import me.manger.model.user.Property;
 import me.manger.model.user.Manager;
+import me.manger.model.user.Property;
 import me.manger.model.user.notifications.NotificationEntry;
 import me.manger.model.user.notifications.NotificationHolder;
 import me.manger.model.user.paymentHistory.HistoryEntry;
@@ -91,71 +91,75 @@ public class ReadFile {
                 Building tempBuilding = new Building();
 
                 Path apartmentsDirectory = Paths.get(building + FileNames.APARTMENTS);
-                DirectoryStream<Path> apartmentsStream = Files.newDirectoryStream(apartmentsDirectory);
-                for(Path apartmentFile : apartmentsStream) {
-                    List<String> lines = Files.readAllLines(apartmentFile);
+                if(Files.exists(apartmentsDirectory)) {
+                    DirectoryStream<Path> apartmentsStream = Files.newDirectoryStream(apartmentsDirectory);
+                    for(Path apartmentFile : apartmentsStream) {
+                        List<String> lines = Files.readAllLines(apartmentFile);
 
-                    String id = apartmentFile.getFileName().toString().substring(0, apartmentFile.getFileName().toString().length() - 4);
+                        String id = apartmentFile.getFileName().toString().substring(0, apartmentFile.getFileName().toString().length() - 4);
 
-                    NotificationHolder notifications = new NotificationHolder();
-                    int i;
-                    for(i = 7; i < lines.size(); i++) {
-                        if(lines.get(i).equals("#")) {
-                            i++;
-                            break;
+                        NotificationHolder notifications = new NotificationHolder();
+                        int i;
+                        for(i = 7; i < lines.size(); i++) {
+                            if(lines.get(i).equals("#")) {
+                                i++;
+                                break;
+                            }
+                            String[] data = lines.get(i).split("\\|");
+                            notifications.entries.add(new NotificationEntry(Long.parseLong(data[0]), data[1], data[2]));
                         }
-                        String[] data = lines.get(i).split("\\|");
-                        notifications.entries.add(new NotificationEntry(Long.parseLong(data[0]), data[1], data[2]));
-                    }
-                    Property temp = new Property(id, tempBuilding, "apartment", Integer.parseInt(lines.get(0)),
-                            Double.parseDouble(lines.get(1)), lines.get(2), lines.get(3), lines.get(4),
-                            Boolean.parseBoolean(lines.get(5)), lines.get(6), notifications, null);
+                        Property temp = new Property(id, tempBuilding, "apartment", Integer.parseInt(lines.get(0)),
+                                Double.parseDouble(lines.get(1)), lines.get(2), lines.get(3), lines.get(4),
+                                Boolean.parseBoolean(lines.get(5)), lines.get(6), notifications, null);
 
-                    HistoryHolder history = new HistoryHolder();
-                    for(; i < lines.size(); i++) {
-                        String[] data = lines.get(i).split("\\|");
-                        history.entries.add(new HistoryEntry(Long.parseLong(data[0]), Double.parseDouble(data[1]), data[2], temp));
-                    }
-                    temp.history = history;
+                        HistoryHolder history = new HistoryHolder();
+                        for(; i < lines.size(); i++) {
+                            String[] data = lines.get(i).split("\\|");
+                            history.entries.add(new HistoryEntry(Long.parseLong(data[0]), Double.parseDouble(data[1]), data[2], temp));
+                        }
+                        temp.history = history;
 
-                    Database.properties.add(temp);
+                        Database.properties.add(temp);
+                    }
                 }
 
                 Path garagesDirectory = Paths.get(building + FileNames.GARAGES);
-                DirectoryStream<Path> garagesStream = Files.newDirectoryStream(garagesDirectory);
-                for(Path garageFile : garagesStream) {
-                    List<String> lines = Files.readAllLines(garageFile);
+                if(Files.exists(garagesDirectory)) {
+                    DirectoryStream<Path> garagesStream = Files.newDirectoryStream(garagesDirectory);
+                    for(Path garageFile : garagesStream) {
+                        List<String> lines = Files.readAllLines(garageFile);
 
-                    String id = garageFile.getFileName().toString().substring(0, garageFile.getFileName().toString().length() - 4);
+                        String id = garageFile.getFileName().toString().substring(0, garageFile.getFileName().toString().length() - 4);
 
-                    int i;
-                    NotificationHolder notifications = new NotificationHolder();
-                    for(i = 7; i < lines.size(); i++) {
-                        if(lines.get(i).equals("#")) {
-                            i++;
-                            break;
+                        int i;
+                        NotificationHolder notifications = new NotificationHolder();
+                        for(i = 7; i < lines.size(); i++) {
+                            if(lines.get(i).equals("#")) {
+                                i++;
+                                break;
+                            }
+                            String[] data = lines.get(i).split("\\|");
+                            notifications.entries.add(new NotificationEntry(Long.parseLong(data[0]), data[1], data[2]));
                         }
-                        String[] data = lines.get(i).split("\\|");
-                        notifications.entries.add(new NotificationEntry(Long.parseLong(data[0]), data[1], data[2]));
+
+                        Property temp = new Property(id, tempBuilding, "garage", Integer.parseInt(lines.get(0)),
+                                Double.parseDouble(lines.get(1)), lines.get(2), lines.get(3), lines.get(4),
+                                Boolean.parseBoolean(lines.get(5)), lines.get(6), notifications, null);
+
+                        HistoryHolder history = new HistoryHolder();
+                        for(; i < lines.size(); i++) {
+                            String[] data = lines.get(i).split("\\|");
+                            history.entries.add(new HistoryEntry(Long.parseLong(data[0]), Double.parseDouble(data[1]), data[2], temp));
+                        }
+                        temp.history = history;
+
+                        Database.garages.add(temp);
                     }
-
-                    Property temp = new Property(id, tempBuilding, "garage", Integer.parseInt(lines.get(0)),
-                            Double.parseDouble(lines.get(1)), lines.get(2), lines.get(3), lines.get(4),
-                            Boolean.parseBoolean(lines.get(5)), lines.get(6), notifications, null);
-
-                    HistoryHolder history = new HistoryHolder();
-                    for(; i < lines.size(); i++) {
-                        String[] data = lines.get(i).split("\\|");
-                        history.entries.add(new HistoryEntry(Long.parseLong(data[0]), Double.parseDouble(data[1]), data[2], temp));
-                    }
-                    temp.history = history;
-
-                    Database.garages.add(temp);
                 }
 
-                Path properties = Paths.get(building + FileNames.BUILDING);
+                Path buildingProperties = Paths.get(building + FileNames.BUILDING);
                 String id = building.getFileName().toString();
-                List<String> lines = Files.readAllLines(properties);
+                List<String> lines = Files.readAllLines(buildingProperties);
 
                 tempBuilding.id = id;
                 tempBuilding.address = lines.get(0);
