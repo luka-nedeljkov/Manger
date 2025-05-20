@@ -7,8 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.user.Manager;
 import me.manger.model.user.Property;
 
@@ -41,6 +41,11 @@ public class MeetingController {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy. HH:mm");
         String subject = txaSubject.getText();
+
+        if(subject.isBlank()) {
+            (new Alert(Alert.AlertType.WARNING, "Unesite temu dnevni red sastanka.", ButtonType.OK)).show();
+            return;
+        }
 
         building.ledger.addEntry("Sastanak: " + sdf.format(date) + " - Dnevni red: " + subject);
         manager.notifications.addEntry("Upravnik", "Sastanak: " + sdf.format(date) + " - Dnevni red: " + subject);

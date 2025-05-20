@@ -6,12 +6,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import me.manger.model.Database;
 import me.manger.model.building.Building;
-import me.manger.model.building.ReclamationEntry;
 import me.manger.model.company.Contractor;
 import me.manger.model.company.Investor;
 import me.manger.model.company.MainContractor;
@@ -19,7 +20,6 @@ import me.manger.model.user.Manager;
 import me.manger.model.user.Property;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -72,6 +72,11 @@ public class CreateController implements Initializable {
 
     @FXML
     void register(ActionEvent event) {
+        if(chbType.getValue() == null || chbInvestor.getValue() == null || chbMainContractor.getValue() == null ||
+                chbContractor.getValue() == null || txaMessage.getText().isBlank()) {
+            (new Alert(Alert.AlertType.WARNING, "Sva polja moraju biti popunjena", ButtonType.OK)).show();
+            return;
+        }
         Building building = Database.session.activeBuilding;
         Property property = chbProperty.getValue();
 

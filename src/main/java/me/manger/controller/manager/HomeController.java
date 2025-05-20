@@ -11,8 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import me.manger.controller.manager.dialog.home.EditPropertyController;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.user.Manager;
 import me.manger.model.user.Property;
 import me.manger.model.user.paymentHistory.HistoryEntry;
@@ -128,6 +128,7 @@ public class HomeController implements Initializable {
     @FXML
     void editProperty(ActionEvent event) throws IOException {
         if(lstProperties.getSelectionModel().getSelectedItem() == null) {
+            (new Alert(Alert.AlertType.WARNING, "Izaberite nekretninu", ButtonType.OK)).show();
             return;
         }
 
@@ -172,7 +173,7 @@ public class HomeController implements Initializable {
                 lblOwner3.setText("...");
             }
         }
-        FilteredList<HistoryEntry> filteredList = new FilteredList<>(FXCollections.observableArrayList(t1.history.entries));
+        FilteredList<HistoryEntry> filteredList = new FilteredList<>(FXCollections.observableArrayList(t1.history.entries.reversed()));
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -6);
         cal.set(Calendar.DAY_OF_MONTH, 1);

@@ -3,12 +3,10 @@ package me.manger.controller.manager.dialog.home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.user.Manager;
 import me.manger.model.user.Property;
 
@@ -46,8 +44,18 @@ public class WithdrawalController implements Initializable {
         Building building = Database.session.activeBuilding;
         Manager manager = building.manager;
 
+        if(txfAmount.getText().isBlank()) {
+            (new Alert(Alert.AlertType.WARNING, "Unesite iznos novca za isplatu.", ButtonType.OK)).show();
+            return;
+        }
+
         double amount = Double.parseDouble(txfAmount.getText());
         String message = txaMessage.getText();
+
+        if(txaMessage.getText().isBlank()) {
+            (new Alert(Alert.AlertType.WARNING, "Unesite opis isplate.", ButtonType.OK)).show();
+            return;
+        }
 
         if(!building.withdraw(amount)) {
             return;
@@ -61,6 +69,7 @@ public class WithdrawalController implements Initializable {
         for(Property property : building.garages) {
             property.notifications.addEntry("Upravnik", "Isplata: " + amount + " - " + message);
         }
+        building.history.addEntry(amount, message, null);
 
         ((Stage) txfAmount.getScene().getWindow()).close();
     }

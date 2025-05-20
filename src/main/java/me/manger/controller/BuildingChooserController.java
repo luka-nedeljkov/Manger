@@ -5,12 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import me.manger.MangerApplication;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.user.Manager;
 
 import java.io.IOException;
@@ -21,13 +22,13 @@ public class BuildingChooserController implements Initializable {
 
     @FXML
     private ChoiceBox<Building> chbBuilding;
-    @FXML
-    private Label lblError;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chbBuilding.getItems().addAll(((Manager) Database.session.loggedIn).buildings);
-        chbBuilding.getSelectionModel().select(0);
+        if(!chbBuilding.getItems().isEmpty()) {
+            chbBuilding.getSelectionModel().select(0);
+        }
     }
 
     @FXML
@@ -45,7 +46,8 @@ public class BuildingChooserController implements Initializable {
 
     @FXML
     void choose(ActionEvent event) throws IOException {
-        if(chbBuilding.getItems().isEmpty()) {
+        if(chbBuilding.getValue() == null) {
+            (new Alert(Alert.AlertType.WARNING, "Izaberite zgradu.", ButtonType.OK)).show();
             return;
         }
 

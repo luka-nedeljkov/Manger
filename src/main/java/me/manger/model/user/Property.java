@@ -12,11 +12,11 @@ public class Property implements User {
     public String type;
     public int number;
     public double area;
+    public boolean isRented;
+
     public String ownerNames;
     public String ownerEmails;
     public String ownerPhones;
-    public boolean isRented;
-
     public String password;
 
     public NotificationHolder notifications;

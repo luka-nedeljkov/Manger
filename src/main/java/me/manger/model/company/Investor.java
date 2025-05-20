@@ -19,13 +19,7 @@ public class Investor {
 
     @Override
     public String toString() {
-        return "Investor{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", contactPerson='" + contactPerson + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return name;
     }
 
 }

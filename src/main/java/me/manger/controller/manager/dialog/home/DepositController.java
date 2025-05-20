@@ -3,11 +3,13 @@ package me.manger.controller.manager.dialog.home;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.user.Manager;
 import me.manger.model.user.Property;
 
@@ -46,6 +48,12 @@ public class DepositController implements Initializable {
         Manager manager = (Manager) Database.session.loggedIn;
         Property property = chbSender.getValue();
         Building building = property.building;
+
+        if(txfAmount.getText().isBlank()) {
+            (new Alert(Alert.AlertType.WARNING, "Unesite iznos novca za uplatu.", ButtonType.OK)).show();
+            return;
+        }
+
         double amount = Double.parseDouble(txfAmount.getText());
 
         building.deposit(amount);

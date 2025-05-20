@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,7 +16,6 @@ import javafx.stage.Stage;
 import me.manger.controller.manager.dialog.reclamation.DetailsController;
 import me.manger.controller.manager.dialog.reclamation.EditController;
 import me.manger.model.Database;
-import me.manger.model.building.Building;
 import me.manger.model.building.ReclamationEntry;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class ReclamationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        table.setItems(FXCollections.observableArrayList(Database.session.activeBuilding.reclamations.entries));
+        table.setItems(FXCollections.observableArrayList(Database.session.activeBuilding.reclamations.entries.reversed()));
         clmCreated.setCellValueFactory(new PropertyValueFactory<>("dateCreated"));
         clmCompleted.setCellValueFactory(new PropertyValueFactory<>("dateCompleted"));
         clmStatus.setCellValueFactory(notificationEntryStringCellDataFeatures -> {
@@ -73,15 +74,17 @@ public class ReclamationController implements Initializable {
         stage.setTitle("Registruj reklamaciju");
         stage.showAndWait();
         table.getItems().clear();
-        table.getItems().addAll(Database.session.activeBuilding.reclamations.entries);
+        table.getItems().addAll(Database.session.activeBuilding.reclamations.entries.reversed());
     }
 
     @FXML
     void editStatus(ActionEvent event) throws IOException {
         if(table.getSelectionModel().getSelectedItem() == null) {
+            (new Alert(Alert.AlertType.WARNING, "Morate odabrati reklamaciju da bi ste izmenili status.", ButtonType.OK)).show();
             return;
         }
         if(table.getSelectionModel().getSelectedItem().status.equals("completed")) {
+            (new Alert(Alert.AlertType.WARNING, "Reklamacija je zatvorena.", ButtonType.OK)).show();
             return;
         }
 
@@ -95,12 +98,13 @@ public class ReclamationController implements Initializable {
         stage.setTitle("Izmeni status");
         stage.showAndWait();
         table.getItems().clear();
-        table.getItems().addAll(Database.session.activeBuilding.reclamations.entries);
+        table.getItems().addAll(Database.session.activeBuilding.reclamations.entries.reversed());
     }
 
     @FXML
     void details(ActionEvent event) throws IOException {
         if(table.getSelectionModel().getSelectedItem() == null) {
+            (new Alert(Alert.AlertType.WARNING, "Morate odabrati reklamaciju da bi ste videli detalje.", ButtonType.OK)).show();
             return;
         }
 

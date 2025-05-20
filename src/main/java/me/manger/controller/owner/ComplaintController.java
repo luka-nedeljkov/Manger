@@ -2,6 +2,8 @@ package me.manger.controller.owner;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import me.manger.model.Database;
@@ -21,10 +23,15 @@ public class ComplaintController {
     @FXML
     void send(ActionEvent event) {
         String message = txaMessage.getText();
+        if(message.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Poruka ne sme biti prazna.", ButtonType.OK);
+            alert.show();
+            return;
+        }
         Property property = (Property) Database.session.loggedIn;
         Manager manager = property.building.manager;
-        property.notifications.addEntry(property.id, message);
-        manager.notifications.addEntry(property.id, message);
+        property.notifications.addEntry(property.toString(), message);
+        manager.notifications.addEntry(property.toString(), message);
         ((Stage) txaMessage.getScene().getWindow()).close();
     }
 

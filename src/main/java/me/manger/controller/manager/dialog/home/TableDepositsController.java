@@ -9,10 +9,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import me.manger.model.Database;
 import me.manger.model.user.Property;
 import me.manger.model.user.paymentHistory.HistoryEntry;
-import me.manger.model.user.paymentHistory.HistoryHolder;
 
 import java.net.URL;
-import java.util.Date;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class TableDepositsController implements Initializable {
@@ -41,6 +41,8 @@ public class TableDepositsController implements Initializable {
         for(Property property : Database.session.activeBuilding.garages) {
             table.getItems().addAll(property.history.entries);
         }
+        Collections.sort(table.getItems(), Comparator.comparing(historyEntry -> historyEntry.date));
+        Collections.reverse(table.getItems());
     }
 
 }

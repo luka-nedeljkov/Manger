@@ -11,8 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.user.Manager;
 import me.manger.model.user.Property;
 import me.manger.model.user.notifications.NotificationEntry;
@@ -37,7 +37,7 @@ public class NotificationsController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		table.getItems().addAll(getEntries((Manager) Database.session.loggedIn));
+		table.getItems().addAll(getEntries((Manager) Database.session.loggedIn).reversed());
 
 		clmDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 		clmSource.setCellValueFactory(notificationEntryStringCellDataFeatures -> {
@@ -51,20 +51,25 @@ public class NotificationsController implements Initializable {
 		clmMessage.setCellValueFactory(new PropertyValueFactory<>("message"));
 
 		filter.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-			ObservableList<NotificationEntry> items = FXCollections.observableArrayList(getEntries((Manager) Database.session.loggedIn));
+			ObservableList<NotificationEntry> items = FXCollections.observableArrayList(getEntries((Manager) Database.session.loggedIn).reversed());
 			FilteredList<NotificationEntry> filteredList = new FilteredList<>(items);
 			switch(((RadioButton) t1).getText()) {
-				case "Obavestenja" -> {
+				case "Obaveštenja" -> {
 					filteredList.setPredicate(notificationEntry -> !notificationEntry.message.matches("Uplata: .+") &&
-							!notificationEntry.source.matches("Garaza \\d+|Stan \\d+"));
+							!notificationEntry.message.matches("Isplata: .+") &&
+							notificationEntry.source.matches("Upravnik"));
 					table.setItems(filteredList);
 				}
 				case "Uplate" -> {
 					filteredList.setPredicate(notificationEntry -> notificationEntry.message.matches("Uplata: .+"));
 					table.setItems(filteredList);
 				}
-				case "Zalbe" -> {
-					filteredList.setPredicate(notificationEntry -> notificationEntry.source.matches("Garaza \\d+|Stan \\d+"));
+				case "Isplate" -> {
+					filteredList.setPredicate(notificationEntry -> notificationEntry.message.matches("Isplata: .+"));
+					table.setItems(filteredList);
+				}
+				case "Žalbe" -> {
+					filteredList.setPredicate(notificationEntry -> !notificationEntry.source.matches("Upravnik"));
 					table.setItems(filteredList);
 				}
 				case "Sve" -> {

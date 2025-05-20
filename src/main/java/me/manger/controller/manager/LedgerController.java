@@ -5,8 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import me.manger.model.building.Building;
 import me.manger.model.Database;
+import me.manger.model.building.Building;
 import me.manger.model.ledger.LedgerEntry;
 
 import java.net.URL;
@@ -28,7 +28,7 @@ public class LedgerController implements Initializable {
         clmDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         clmMessage.setCellValueFactory(new PropertyValueFactory<>("message"));
 
-        table.getItems().addAll(building.ledger.entries);
+        table.getItems().addAll(building.ledger.entries.reversed());
     }
 
 }

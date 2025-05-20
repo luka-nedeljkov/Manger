@@ -21,14 +21,7 @@ public class Contractor {
 
     @Override
     public String toString() {
-        return "Contractor{" +
-                "id='" + id + '\'' +
-                ", workType='" + workType + '\'' +
-                ", name='" + name + '\'' +
-                ", contactPerson='" + contactPerson + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return name;
     }
 
 }

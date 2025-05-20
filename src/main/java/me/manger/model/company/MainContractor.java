@@ -35,13 +35,7 @@ public class MainContractor {
 
     @Override
     public String toString() {
-        return "MainContractor{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", contactPerson='" + contactPerson + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return name;
     }
 
 }
